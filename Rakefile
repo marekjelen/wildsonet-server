@@ -15,14 +15,15 @@ Jeweler::Tasks.new do |gem|
   gem.name = "wildsonet-server"
   gem.homepage = "http://github.com/marekjelen/wildsonet-server"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Server backend for WildSoNet}
+  gem.description = %Q{Server backend for WildSoNet}
   gem.email = "marek@jelen.biz"
   gem.authors = ["Marek Jelen"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
+  gem.add_runtime_dependency 'rack', '> 1.0'
   #  gem.add_development_dependency 'rspec', '> 1.2.3'
+  gem.files.include "jars/*.jar"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
