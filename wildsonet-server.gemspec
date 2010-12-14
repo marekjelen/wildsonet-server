@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
@@ -33,7 +34,8 @@ Gem::Specification.new do |s|
     "jars/servlet-api-2.5.jar",
     "lib/wildsonet-server.rb",
     "test/helper.rb",
-    "test/test_wildsonet-server.rb"
+    "test/test_wildsonet-server.rb",
+    "wildsonet-server.gemspec"
   ]
   s.homepage = %q{http://github.com/marekjelen/wildsonet-server}
   s.licenses = ["MIT"]
