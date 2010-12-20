@@ -2,6 +2,32 @@
 
 Server backend for WildSoNet.
 
+== Implementation
+
+Embeds jetty web server and implements Java's servlet with simple Rack interface.
+
+== Status
+
+* No documentation
+* No tests
+
+Not production ready ... experimental ... proof of concept.
+
+== Usage
+
+=== Rails
+
+  rails server wildsonet -p 3000 -b 0.0.0.0 -e development
+
+=== Rack
+
+  #TBD#
+
+== To be done
+
+* Uploads
+* Lots of other features
+
 == Contributing to wildsonet-server
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
