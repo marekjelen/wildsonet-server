@@ -1,5 +1,7 @@
 require "java"
 
+require "active_support/core_ext/module"
+
 Dir.glob(File.join(File.dirname(__FILE__), "..", "jars", "*")) do |file|
   require file
 end
