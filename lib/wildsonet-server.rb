@@ -1,6 +1,6 @@
 require "java"
 
-require "active_support/core_ext/module"
+require "active_support/core_ext/class/attribute_accessors.rb"
 
 Dir.glob(File.join(File.dirname(__FILE__), "..", "jars", "*")) do |file|
   require file
