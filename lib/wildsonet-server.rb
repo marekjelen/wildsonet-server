@@ -1,3 +1,4 @@
+require "logger"
 require "java"
 
 require "active_support/core_ext/class/attribute_accessors.rb"

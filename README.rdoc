@@ -1,4 +1,4 @@
-= WildSoNet (server)
+= WildSoNet::Server
 
 Server backend for WildSoNet.
 
@@ -17,11 +17,17 @@ Not production ready ... experimental ... proof of concept.
 
 === Rails
 
-  rails server wildsonet -p 3000 -b 0.0.0.0 -e development
+Start rails with the following command
+
+  rails server wildsonet -p <port> -b <hostname> -e <environment>
 
 === Rack
 
-  #TBD#
+Add this to your config.ru
+
+  WildSoNet::Rack::Handler.run(App)
+
+where App is your Rack application.
 
 == To be done
 
