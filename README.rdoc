@@ -15,23 +15,48 @@ Not production ready ... experimental ... proof of concept.
 
 == Usage
 
+This server should be used behind front-end server.
+
+=== nginx
+
+    server {
+
+        listen          <public_port>;
+        server_name     <public_address>;
+
+        location /static/ {
+            internal;
+            alias <path_to_rails_application>/public/;
+        }
+
+        location / {
+            proxy_pass http://<rails_address>:<address_port>;
+        }
+
+    }
+
+This template may be used to configure front-end nginx server to work with this server. <public_port> and
+<public_address> is your front facing domain and port. <path_to_rails_application> points to location of your
+rails application, this server uses nginx to serve static content. <rails_address> and <address_port> is address
+where was your rails/rack application started.
+
 === Rails
 
 Start rails with the following command
 
-  rails server wildsonet -p <port> -b <hostname> -e <environment>
+    rails server wildsonet -p <port> -b <hostname> -e <environment>
 
 === Rack
 
 Add this to your config.ru
 
-  WildSoNet::Rack::Handler.run(App)
+    WildSoNet::Rack::Handler.run(App)
 
 where App is your Rack application.
 
 == To be done
 
-* Uploads
+* High performance uploads (?)
 * Lots of other features
 
 == Contributing to wildsonet-server

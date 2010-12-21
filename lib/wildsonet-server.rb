@@ -19,6 +19,8 @@ module WildSoNet
     java_import "org.jruby.embed.ScriptingContainer"
     java_import "javax.servlet.http.HttpServlet"
 
+    java_import "org.apache.commons.fileupload.servlet.ServletFileUpload"
+
     class Handler < HttpServlet
 
       cattr_accessor :tester
@@ -76,9 +78,13 @@ module WildSoNet
             "rack.multiprocess" => false,
             "rack.run_once"     => false,
             #"rack.session"      => Session.new(request.session(true)),
-            "rack.logger"       => @logger
-
+            "rack.logger"       => @logger,
+            "wildsonet.written" => false
         }
+
+        #if ServletFileUpload.isMultipartContent(request)
+        #  self.upload_handler(request, env)
+        #end
 
         request.getHeaderNames().each do |name|
           key = self.header_handler(name)
@@ -98,8 +104,16 @@ module WildSoNet
 
         content.each do |part|
           response.writer.write(part)
-        end
+        end unless env["wildsonet.written"]
 
+      end
+
+      def upload_handler request, env
+        upload   = ServletFileUpload.new
+        iterator = upload.getItemIterator(request)
+        while iterator.hasNext
+          file = iterator.next
+        end
       end
 
       def header_handler name
