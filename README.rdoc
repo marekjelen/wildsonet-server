@@ -57,6 +57,7 @@ where App is your Rack application.
 == To be done
 
 * High performance uploads (?)
+* Configuration (ports, bind address, threadpool, static files serving, logging, temp files)
 * Lots of other features
 
 == Contributing to wildsonet-server
