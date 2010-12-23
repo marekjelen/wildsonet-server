@@ -1,6 +1,4 @@
-source "http://rubygems.org"
-
-gem "activesupport"
+source :rubygems
 
 group :development do
   gem "shoulda", ">= 0"
