@@ -1,5 +1,5 @@
 module WildSoNet
   module Server
-    VERSION = "0.1.7"
+    VERSION = "0.2.0" unless defined?(::WildSoNet::Server::VERSION)
   end
 end

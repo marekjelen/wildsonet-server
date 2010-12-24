@@ -1,4 +1,7 @@
-require "lib/wildsonet-server-version"
+lib = File.join(File.dirname(__FILE__), "lib")
+$: << lib unless $:.include?(lib)
+
+require "wildsonet-server-version"
 
 Gem::Specification.new do |s|
 
