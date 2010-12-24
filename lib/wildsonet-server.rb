@@ -91,7 +91,7 @@ module WildSoNet
       # @param response Response to the request
       def service request, response
         # "Compute" the path to request file
-        file = File.join(options[:Public], request.getRequestURI())
+        file = File.join(@options[:Public], request.getRequestURI())
         # Check file existence
         if File.exists?(file) and File.file?(file)
           # Tell the proxy server(nginx) to serve this request from static files
