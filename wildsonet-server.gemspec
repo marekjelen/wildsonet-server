@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
     "jars/jetty-util-7.2.0.v20101020.jar",
     "jars/servlet-api-2.5.jar",
     "lib/wildsonet-server.rb",
+    "lib/wildsonet-server-version.rb",
     "wildsonet-server.gemspec"
   ]
 
