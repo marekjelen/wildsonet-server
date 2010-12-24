@@ -4,7 +4,10 @@ Dir.glob(File.join(File.dirname(__FILE__), "..", "jars", "*")) do |file|
   require file
 end
 
+# WildSoNet namespace
 module WildSoNet
+
+  # Rack extensions from WildSoNet
   module Rack
 
     java_import "org.eclipse.jetty.server.Server"
@@ -18,8 +21,15 @@ module WildSoNet
 
     java_import "org.apache.commons.fileupload.servlet.ServletFileUpload"
 
+    # Rack handler utilizing Jetty web server. Works with nginx as frontend server to proxy the requests.
+    # Jetty handles only dynamic requests. Static requests are handled by nginx proxy.
+
     class Handler < HttpServlet
 
+      # Starts the server.
+      #
+      # @param app Rack application to start
+      # @param options Options for server
       def self.run app, options = {}
         # Set default options
         options[:Port]      ||= 3000
@@ -56,12 +66,17 @@ module WildSoNet
 
       end
 
+      # Stops the server
       def self.shutdown
         # Stop server
         @@server.stop
         @@server = nil
       end
 
+      # Setup the server.
+      #
+      # @param app Rack application to start
+      # @param options Options for server
       def setup(app, options)
         @app     = app
         @options = options
@@ -70,6 +85,10 @@ module WildSoNet
         @options[:Public] ||= File.expand_path("public") 
       end
 
+      # Handles the request. Servlet method.
+      #
+      # @param request Request to process
+      # @param response Response to the request
       def service request, response
         # "Compute" the path to request file
         file = File.join(options[:Public], request.getRequestURI())
@@ -83,6 +102,10 @@ module WildSoNet
         end
       end
 
+      # Process the request
+      #
+      # @param request Request to be processed
+      # @param response Response to the request
       def call request, response
 
         # Prepare basic Rack environment
@@ -133,7 +156,10 @@ module WildSoNet
 
       end
 
-      # Processes header names to Rack format, return nil if header should be skipped
+      # Processes header names to Rack format
+      #
+      # @param name Header name to transform
+      # @return Rack formatted header name or nil to skip the header
       def header_handler name
         "HTTP_" + name.to_s.sub("-", "_").upcase
       end

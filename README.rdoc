@@ -8,7 +8,6 @@ Embeds jetty web server and implements Java's servlet with simple Rack interface
 
 == Status
 
-* No documentation
 * No tests
 
 Not production ready ... experimental ... proof of concept.
@@ -57,7 +56,7 @@ where App is your Rack application.
 == To be done
 
 * High performance uploads (?)
-* Configuration (ports, bind address, threadpool, static files serving, logging, temp files)
+* Configuration (threadpool)
 * Lots of other features
 
 == Contributing to wildsonet-server
