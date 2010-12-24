@@ -4,11 +4,13 @@ Dir.glob(File.join(File.dirname(__FILE__), "..", "jars", "*")) do |file|
   require file
 end
 
+require "wildsonet-server-version"
+
 # WildSoNet namespace
 module WildSoNet
 
   # Rack extensions from WildSoNet
-  module Rack
+  module Server
 
     java_import "org.eclipse.jetty.server.Server"
     java_import "org.eclipse.jetty.server.nio.SelectChannelConnector"
@@ -18,8 +20,6 @@ module WildSoNet
     java_import "org.jruby.embed.PathType"
     java_import "org.jruby.embed.ScriptingContainer"
     java_import "javax.servlet.http.HttpServlet"
-
-    java_import "org.apache.commons.fileupload.servlet.ServletFileUpload"
 
     # Rack handler utilizing Jetty web server. Works with nginx as frontend server to proxy the requests.
     # Jetty handles only dynamic requests. Static requests are handled by nginx proxy.
@@ -169,4 +169,4 @@ module WildSoNet
 end
 
 # Register the handler with Rack
-Rack::Handler.register "wildsonet", "WildSoNet::Rack::Handler"
+Rack::Handler.register "wildsonet", "WildSoNet::Server::Handler"

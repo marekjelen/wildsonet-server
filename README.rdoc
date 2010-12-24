@@ -49,13 +49,12 @@ Start rails with the following command
 
 Add this to your config.ru
 
-    WildSoNet::Rack::Handler.run(App)
+    WildSoNet::Server::Handler.run(App)
 
 where App is your Rack application.
 
 == To be done
 
-* High performance uploads (?)
 * Configuration (threadpool)
 * Lots of other features
 
