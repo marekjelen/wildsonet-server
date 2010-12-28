@@ -45,6 +45,7 @@ Gem::Specification.new do |s|
   ]
 
   s.add_runtime_dependency("rack", ["> 1.0"])
-
+  s.add_runtime_dependency("wildsonet-netty", ["> 0.0"])
+  s.add_runtime_dependency("activesupport", ["> 3.0"])
 end
 
