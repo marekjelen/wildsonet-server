@@ -1,7 +1,7 @@
 require "java"
 
 require "wildsonet-netty"
-require "active_support/core_ext/hash/reverse_merge"
+require "rack"
 
 require  File.join(File.dirname(__FILE__), "..", "jars", "wildsonet_server.jar")
 
