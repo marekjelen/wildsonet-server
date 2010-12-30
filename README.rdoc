@@ -62,6 +62,11 @@ where App is your Rack application.
 
 == Changes
 
+=== 0.2.3
+
+* Depend on Rack
+* Do not depend on Rails (ActiveSupport)
+
 === 0.2.2
 
 * Rewritten from Jetty to Netty - no need for full web server
