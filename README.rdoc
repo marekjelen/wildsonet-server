@@ -4,7 +4,7 @@ Server backend for WildSoNet.
 
 == Implementation
 
-Embeds jetty web server and implements Java's servlet with simple Rack interface.
+Implements simple Rack interdace on top of Netty library.
 
 == Status
 
@@ -29,6 +29,8 @@ This server should be used behind front-end server.
         }
 
         location / {
+            proxy_set_header X-For-Host     $http_host;
+            proxy_set_header X-For-Scheme   $scheme;
             proxy_pass http://<rails_address>:<address_port>;
         }
 
@@ -57,6 +59,12 @@ where App is your Rack application.
 
 * Configuration (threadpool)
 * Lots of other features
+
+== Changes
+
+=== 0.2.2
+
+* Rewritten from Jetty to Netty - no need for full web server
 
 == Contributing to wildsonet-server
  

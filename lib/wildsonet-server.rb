@@ -54,7 +54,7 @@ module WildSoNet
       # @param app Rack application to start
       # @param options Options for server
       def initialize(app, options)
-        @app     = app
+        @app     = ::Rack::Lint.new(app)
         @options = options
       end
 
@@ -72,6 +72,8 @@ module WildSoNet
               ruby[key] = env[key]
           end
         end
+
+        ruby["rack.version"] = ::Rack::VERSION
 
         status, headers, body = @app.call(ruby)
 
