@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.name = "wildsonet-server"
   s.version = WildSoNet::Server::VERSION
   s.authors = ["Marek Jelen"]
-  s.summary = "Server backends for WildSoNet"
-  s.description = "Server backends for WildSoNet"
+  s.summary = "Server backend for WildSoNet"
+  s.description = "Server backend for WildSoNet on top of Netty library"
   s.email = "marek@jelen.biz"
   s.homepage = "http://github.com/marekjelen/wildsonet-server"
   s.licenses = ["MIT"]
@@ -26,14 +26,7 @@ Gem::Specification.new do |s|
     "Gemfile",
     "LICENSE.txt",
     "README.rdoc",
-    "jars/jetty-continuation-7.2.0.v20101020.jar",
-    "jars/jetty-http-7.2.0.v20101020.jar",
-    "jars/jetty-io-7.2.0.v20101020.jar",
-    "jars/jetty-security-7.2.0.v20101020.jar",
-    "jars/jetty-server-7.2.0.v20101020.jar",
-    "jars/jetty-servlet-7.2.0.v20101020.jar",
-    "jars/jetty-util-7.2.0.v20101020.jar",
-    "jars/servlet-api-2.5.jar",
+    "jars/wildsonet_server.jar",
     "lib/wildsonet-server.rb",
     "lib/wildsonet-server-version.rb",
     "wildsonet-server.gemspec"
