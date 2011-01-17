@@ -6,10 +6,10 @@ require "wildsonet-server-version"
 Gem::Specification.new do |s|
 
   s.name = "wildsonet-server"
-  s.version = WildSoNet::Server::VERSION
+  s.version = Wildsonet::Server::VERSION
   s.authors = ["Marek Jelen"]
-  s.summary = "Server backend for WildSoNet"
-  s.description = "Server backend for WildSoNet on top of Netty library"
+  s.summary = "Server backend for Wildsonet"
+  s.description = "Server backend for Wildsonet on top of Netty library"
   s.email = "marek@jelen.biz"
   s.homepage = "http://github.com/marekjelen/wildsonet-server"
   s.licenses = ["MIT"]

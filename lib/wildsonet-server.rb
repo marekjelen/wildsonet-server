@@ -8,7 +8,7 @@ require  File.join(File.dirname(__FILE__), "..", "jars", "wildsonet_server.jar")
 require "wildsonet-server-version"
 
 # WildSoNet namespace
-module WildSoNet
+module Wildsonet
 
   # Rack extensions from WildSoNet
   module Server
@@ -102,4 +102,4 @@ module WildSoNet
 end
 
 # Register the handler with Rack
-Rack::Handler.register "wildsonet", "WildSoNet::Server::Handler"
+Rack::Handler.register "wildsonet", "Wildsonet::Server::Handler"

@@ -1,6 +1,6 @@
-= WildSoNet::Server
+= Wildsonet::Server
 
-Server backend for WildSoNet.
+Server backend for Wildsonet.
 
 == Implementation
 
@@ -51,7 +51,7 @@ Start rails with the following command
 
 Add this to your config.ru
 
-    WildSoNet::Server::Handler.run(App)
+    Wildsonet::Server::Handler.run(App)
 
 where App is your Rack application.
 
@@ -61,6 +61,10 @@ where App is your Rack application.
 * Lots of other features
 
 == Changes
+
+=== 0.2.4
+
+* Rename module from WildSoNet to Wildsonet and update documentation
 
 === 0.2.3
 
