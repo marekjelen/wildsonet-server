@@ -7,10 +7,10 @@ require  File.join(File.dirname(__FILE__), "..", "jars", "wildsonet_server.jar")
 
 require "wildsonet-server-version"
 
-# WildSoNet namespace
+# Wildsonet namespace
 module Wildsonet
 
-  # Rack extensions from WildSoNet
+  # Rack extensions from Wildsonet
   module Server
 
     java_import "cz.wildsonet.server.RackProxy"
@@ -22,8 +22,8 @@ module Wildsonet
     java_import "org.jboss.netty.handler.codec.http.HttpVersion"
     java_import "org.jboss.netty.channel.ChannelFutureListener"
 
-    # Rack handler utilizing Jetty web server. Works with nginx as frontend server to proxy the requests.
-    # Jetty handles only dynamic requests. Static requests are handled by nginx proxy.
+    # Rack handler utilizing Netty library. Works with nginx as frontend server to proxy the requests.
+    # Netty handles only dynamic requests. Static requests are handled by nginx proxy.
 
     class Handler
 
@@ -94,6 +94,9 @@ module Wildsonet
         future = env["wsn.context"].channel.write(response)
 
         future.addListener(ChannelFutureListener::CLOSE)
+
+        env["rack.input"].close
+        File.delete(env["wsn.tempfile"])
         
       end
 
