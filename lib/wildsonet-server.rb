@@ -77,23 +77,27 @@ module Wildsonet
 
         status, headers, body = @app.call(ruby)
 
-        response = DefaultHttpResponse.new(HttpVersion::HTTP_1_1, HttpResponseStatus.valueOf(status))
+        unless headers.include?("X-Handled")
 
-        headers.each_pair do |header, value|
-          response.addHeader(header, value)
+          response = DefaultHttpResponse.new(HttpVersion::HTTP_1_1, HttpResponseStatus.valueOf(status))
+
+          headers.each_pair do |header, value|
+            response.addHeader(header, value)
+          end
+
+          buffer = ChannelBuffers.dynamicBuffer
+
+          body.each do |line|
+            buffer.writeBytes(line.to_s.to_java_bytes)
+          end
+
+          response.content = buffer
+
+          future = env["wsn.context"].channel.write(response)
+
+          future.addListener(ChannelFutureListener::CLOSE)
+          
         end
-
-        buffer = ChannelBuffers.dynamicBuffer
-
-        body.each do |line|
-          buffer.writeBytes(line.to_s.to_java_bytes)
-        end
-
-        response.content = buffer
-
-        future = env["wsn.context"].channel.write(response)
-
-        future.addListener(ChannelFutureListener::CLOSE)
 
         env["rack.input"].close
         File.delete(env["wsn.tempfile"])

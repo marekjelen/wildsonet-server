@@ -55,12 +55,21 @@ Add this to your config.ru
 
 where App is your Rack application.
 
+=== X-Handled
+
+When response includes *X-Handled* header, the server will not try to respond by itself, but will expect the application
+to handle to response. The server will only clean up temporary files for the request.
+
 == To be done
 
 * Configuration (threadpool)
 * Lots of other features
 
 == Changes
+
+=== 0.2.6
+
+* Enable non-standard response via X-Handled
 
 === 0.2.5
 
